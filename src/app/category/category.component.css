@@ -1,0 +1,13 @@
+.open {
+    background-color: #178E7E; 
+    color: #fff;
+}
+
+.close {
+    background-color: #076B5F; 
+}
+
+.fieldsList button {
+    width: 100%;
+    margin-bottom: 5px;
+}

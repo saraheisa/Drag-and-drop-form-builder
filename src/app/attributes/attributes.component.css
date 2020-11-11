@@ -1,0 +1,24 @@
+.attributes {
+    display: flex;
+    flex-direction: column;
+}
+
+.attributes * {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.options-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-options {
+    width: 30px;
+    height: 30px;
+}
+.options {
+    margin: 5px;
+}

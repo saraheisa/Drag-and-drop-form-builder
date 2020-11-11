@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Choose a FORM</h1>
+
+<div mat-dialog-content>
+    <div class="container">
+        <div [ngClass]="{'seperator': selectedForm !== undefined}">
+
+            <app-search (searchTextEmitter)="setSearchText($event)"></app-search>
+            
+            <div class="form-container">
+              <app-form-view *ngFor="let form of data.forms | filter:searchText" [form]="form" (click)="selectedForm = form" 
+              [ngClass]="{'selected': selectedForm === form}" class="pointer hover"></app-form-view>
+            </div>
+          
+        </div>
+        <div *ngIf="selectedForm !== undefined" class="preview">
+            {{ selectedForm.description }}
+        </div>
+    </div>
+</div>
+
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">Return</button>
+  <button mat-button (click)="openFormBuilder()" [disabled]="selectedForm === undefined" cdkFocusInitial>GO!</button>
+</div>

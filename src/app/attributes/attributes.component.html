@@ -1,0 +1,111 @@
+<div class="attributes" *ngIf="(field | json) != '{}'">
+  <mat-slide-toggle *ngIf="field.hasOwnProperty('visible')" [(ngModel)]="field.visible">visibility</mat-slide-toggle>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('id')" [color]="'accent'">
+    <mat-label>ID</mat-label>
+    <input matInput [(ngModel)]="field.id">
+    <mat-error>must have</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('name')" [color]="'accent'">
+    <mat-label>Name</mat-label>
+    <input [(ngModel)]="field.name" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('text')" [color]="'accent'">
+    <mat-label>Text/Placeholder</mat-label>
+    <input [(ngModel)]="field.text" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('dataConcept')" [color]="'accent'">
+    <mat-label>Data Concept</mat-label>
+    <input [(ngModel)]="field.dataConcept" matInput [matAutocomplete]="dataConceptAuto">
+  </mat-form-field>
+  <mat-autocomplete #dataConceptAuto="matAutocomplete">
+    <mat-option *ngFor="let dataConcept of dataConcepts" [value]="dataConcept">{{dataConcept}}</mat-option>
+  </mat-autocomplete>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('fieldLbl')" [color]="'accent'">
+    <mat-label>Field Label</mat-label>
+    <input [(ngModel)]="field.fieldLbl" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('value')" [color]="'accent'">
+    <mat-label>Value</mat-label>
+    <input [(ngModel)]="field.value" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('inputType')" [color]="'accent'">
+    <mat-label>Type</mat-label>
+    <input [(ngModel)]="field.inputType" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('rows')" [color]="'accent'">
+    <mat-label>Rows</mat-label>
+    <input [(ngModel)]="field.rows" matInput type="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('columns')" [color]="'accent'">
+    <mat-label>Columns</mat-label>
+    <input [(ngModel)]="field.columns" matInput type="number">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('customCssClass')" [color]="'accent'">
+    <mat-label>Custom CSS Class</mat-label>
+    <input [(ngModel)]="field.customCssClass" matInput>
+    <mat-hint>Seperate between classes by a Coma ','</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('inputMask')" [color]="'accent'">
+    <mat-label>Input Mask</mat-label>
+    <input [(ngModel)]="field.inputMask" matInput>
+    <mat-hint></mat-hint>
+  </mat-form-field>
+  
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('min') && field.inputType === 'number'" [color]="'accent'">
+    <mat-label>Minimum</mat-label>
+    <input [(ngModel)]="field.min" matInput type="number">
+    <mat-hint></mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('max') && field.inputType === 'number'" [color]="'accent'">
+    <mat-label>Maximum</mat-label>
+    <input [(ngModel)]="field.max" matInput type="number">
+    <mat-hint></mat-hint>
+  </mat-form-field>
+
+  <mat-checkbox *ngIf="field.hasOwnProperty('readonly')" [(ngModel)]="field.readonly">Readonly</mat-checkbox>
+  <mat-checkbox *ngIf="field.hasOwnProperty('required')" [(ngModel)]="field.required">Required</mat-checkbox>
+  <mat-checkbox *ngIf="field.hasOwnProperty('repeat')" [(ngModel)]="field.repeat">Repeat</mat-checkbox>
+  <mat-checkbox *ngIf="field.hasOwnProperty('checked')" [(ngModel)]="field.checked">Checked</mat-checkbox>
+  <mat-checkbox *ngIf="field.hasOwnProperty('isPastDate') && field.inputType === 'date'" [(ngModel)]="field.isPastDate">
+    Past Date</mat-checkbox>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('errorMsg')" [color]="'accent'">
+    <mat-label>Enter Error Message...</mat-label>
+    <textarea matInput [(ngModel)]="field.errorMsg"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" *ngIf="field.hasOwnProperty('description')" [color]="'accent'">
+    <mat-label>Enter Description...</mat-label>
+    <textarea matInput [(ngModel)]="field.description"></textarea>
+  </mat-form-field>
+
+  <div *ngIf="field.hasOwnProperty('options')">
+    <div class="options-header">
+      <span>Options</span>
+      <button mat-mini-fab class="add-options" (click)="addOption()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="options">
+      <app-option *ngFor="let option of field.options; index as i" [option]="option" (deleteEmitter)="deleteOption(i)"></app-option>
+    </div>
+  </div>
+
+  <mat-radio-group aria-label="Select an option" *ngIf="field.hasOwnProperty('fieldsetType')" [(ngModel)]="field.fieldsetType">
+    <mat-radio-button value="checkbox">CheckBox</mat-radio-button>
+    <mat-radio-button value="radio">Radio</mat-radio-button>
+  </mat-radio-group>
+
+</div>

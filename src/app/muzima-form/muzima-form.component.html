@@ -1,0 +1,20 @@
+<body class="col-md-10 col-md-offset-1">
+  <div id="result"></div>
+  <form id="{{ form.name }}" name="{{ form.name }}">
+    <div id="pre_populate_data"></div>
+    <h2 class="text-center">{{ form.name }}</h2>
+    <div id="form" class="form" >
+      
+      <section *ngFor="let section of form?.sections; index as i" class="section-container">
+        <div class="section-controllers">
+          <mat-icon class="arrow" (click)="moveup(i)">arrow_upward</mat-icon>
+          <input type="radio" name="section" id="{{ section.id }}" class="radio" (click)="select(section)">
+          <mat-icon class="delete" (click)="delete(i)">delete</mat-icon>
+          <mat-icon class="arrow" (click)="movedown(i)">arrow_downward</mat-icon>
+        </div>
+        <app-section [section]="section" (selectEmitter)="select($event)" class="section-comp"></app-section>
+      </section>
+
+    </div>
+  </form>
+</body>

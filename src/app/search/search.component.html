@@ -1,0 +1,7 @@
+<div>
+  <mat-icon class="icon" [ngClass]="{'icon-animation': !isSearchFocused, 'reverse-animation': isSearchFocused}">
+    search
+  </mat-icon>
+  <input type="text" class="search" (focus)="isSearchFocused=true" (focusout)="isSearchFocused=false" (keyup)="setSearchText()" 
+  [(ngModel)]="searchText">
+</div>

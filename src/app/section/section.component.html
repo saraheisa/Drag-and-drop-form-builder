@@ -1,0 +1,111 @@
+<div cdkDropList id="{{ section.id }}" [cdkDropListData]="section.fields"
+(cdkDropListDropped)="onDrop($event)" cdkDropListConnectedTo="fieldsList" class="section fields-list"
+[attr.repeat]="section.repeat? '' : null">
+  <div *ngFor="let field of section.fields; index as i;"
+    class="form-group {{field.customCssClass}} {{ field.visible? '' : 'hidden' }}" (click)="select(field)"
+    cdkDragBoundary=".fields-list" cdkDragLockAxis="y" cdkDrag [ngClass]="{'selected': field === selected}"
+    [ngSwitch]="field.type">
+
+    <div class="icon handle-icon" cdkDragHandle>
+      <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
+        <path
+          d="M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z">
+        </path>
+        <path d="M0 0h24v24H0z" fill="none"></path>
+      </svg>
+    </div>
+    <div class="icon delete-icon">
+      <mat-icon (click)="delete(i)">delete_forever</mat-icon>
+    </div>
+    <div class="icon visible-icon" *ngIf="field.hasOwnProperty('visible')">
+      <mat-icon>{{field.visible? 'visibility' : 'visibility_off'}}</mat-icon>
+    </div>
+
+    <label *ngIf="field.type === 'input' || field.type === 'textarea' || field.type === 'BarCode Scanner' ||
+            field.type==='select' || field.type==='fieldset'" for="{{field.id}}">
+      {{field.fieldLbl}}: <span class="required" *ngIf="field.required">*</span>
+    </label>
+
+    <input *ngSwitchCase="'input'"
+      class="form-control {{ field.inputType === 'date'? field.isPastDate? 'datepicker nonFutureDate past-date' : 'datepicker' : '' }}"
+      id="{{field.id}}" name="{{field.name}}" type="{{field.inputType}}" placeholder="{{field.text}}"
+      value="{{field.value}}" [attr.required]="field.required? '' : null" [attr.readonly]="field.readonly? '' : null"
+      [attr.data-concept]="field.dataConcept" [attr.pattern]="field.inputMask"
+      [attr.min]="field.inputType === 'number'? field.min : null"
+      [attr.max]="field.inputType === 'number'? field.max : null">
+
+    <textarea class="form-control" id="{{field.id}}" name="{{field.name}}" placeholder="{{field.text}}"
+      value="{{field.value}}" [attr.required]="field.required? '' : null" [attr.readonly]="field.readonly? '' : null"
+      [attr.data-concept]="field.dataConcept" [attr.rows]="field.rows" [attr.columns]="field.columns"
+      *ngSwitchCase="'textarea'">
+          </textarea>
+
+    <label class="font-normal" *ngSwitchCase="'checkbox'">
+      <input id="{{field.id}}" type="checkbox" [attr.data-concept]="field.dataConcept" value="{{field.value}}"
+        [attr.checked]="field.checked? '' : null" />
+      {{field.fieldLbl}}
+    </label>
+
+    <label class="font-normal" *ngSwitchCase="'radio'">
+      <input id="{{field.id}}" type="{{field.type}}" [attr.data-concept]="field.dataConcept" value="{{field.value}}"
+        name="{{field.name}}" [attr.checked]="field.checked? '' : null" />
+      {{field.fieldLbl}}
+    </label>
+
+    <fieldset name="{{field.name}}" *ngSwitchCase="'fieldset'">
+      <div class="form-group" *ngFor="let option of field.options;">
+        <label class="font-normal">
+          <input id="{{option.id}}" type="{{field.fieldsetType}}" [attr.data-concept]="option.dataConcept"
+            value="{{option.value}}" [attr.checked]="option.checked? '' : null"
+            class="{{ option.hasFreeTxt? 'has-freetext' : '' }}">
+          {{option.label}}
+        </label>
+      </div>
+      <div class="form-group freetext">
+        <label for="service_referrals.freetext_general">Specify:<span class="required">*</span></label>
+        <textarea class="form-control" name="" id="" data-concept="1915^FREETEXT GENERAL^99DCT"></textarea>
+      </div>
+    </fieldset>
+
+
+    <div *ngSwitchCase="'BarCode Scanner'" class="form-horizontal">
+      <div class="group-set" [attr.data-group]="field.dataGroup">
+        <input type="button" class='btn barcode_btn'>
+        <input class="barcode_text form-control" id="{{ field.id }}" name="{{ field.id }}" type="text">
+        <input attr.data-metadata-for="{{ field.id }}" type="hidden" id="identifier_type_uuid"
+          name="identifier_type_uuid" value="8d793bee-c2cc-11de-8d13-0010c6dffd0f">
+      </div>
+    </div>
+
+    <select *ngSwitchCase="'select'" class="form-control" id="{{ field.id }}" name="{{ field.name }}"
+      [attr.readonly]="field.readonly? '' : null">
+      <option *ngFor="let option of field.options;" value="{{ option.value }}">{{ option.label }}</option>
+    </select>
+
+    <!-- <div *ngSwitchCase="'section'" class="section" id="{{ field.id }}">
+
+  </div> -->
+
+    <!-- for audio/video/image fields-->
+    <div *ngSwitchDefault class="section {{field.repeat? 'repeat' : ''}}" id="{{field.id}}"
+      [attr.data-name]="field.dataName" [attr.data-concept]="field.dataConcept">
+      <h4><b>{{field.fieldLbl}}</b></h4>
+      <div class="form-group">
+        <label for="{{'obs.' + field.id}}">{{ field.text }}:<span class="required"
+            *ngIf="field.required">*</span></label>
+        <input type="button"
+          class="btn {{field.type === 'image' ? 'image_btn' : ''}}
+              {{field.type === 'video' ? 'video_record_btn' : ''}} {{field.type === 'audio' ? 'audio_record_btn' : ''}}">
+        <input class="image_text form-control" id="{{'obs.' + field.id}}" readonly="readonly"
+          name="{{'obs.' + field.id}}" type="hidden" [attr.data-concept]="field.dataConcept" />
+        <div class="form-group">
+          <label for="{{'obs.' + field.id + '_caption'}}">{{ field.caption }}</label>
+          <input class="form-control" id="{{'obs.' + field.id + '_caption'}}" readonly="readonly"
+            name="{{'obs.' + field.id + '_caption'}}" type="text" [attr.required]="field.required? '' : null"
+            [attr.data-concept]="field.dataConcept">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

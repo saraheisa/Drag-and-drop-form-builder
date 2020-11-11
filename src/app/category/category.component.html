@@ -1,0 +1,18 @@
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+  [ngClass]="{'open': panelOpenState, 'close': !panelOpenState}">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{category?.name}}
+    </mat-panel-title>
+    <mat-panel-description>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div cdkDropList id="fieldsList" cdkDropListSortingDisabled
+    [cdkDropListData]="category?.fields"
+    [cdkDropListConnectedTo]="sectionIds" class="fieldsList">
+
+    <button mat-button routerLink="." *ngFor="let field of category?.fields" cdkDrag>{{ field.type }}</button>
+
+  </div>
+</mat-expansion-panel>

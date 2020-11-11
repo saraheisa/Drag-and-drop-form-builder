@@ -1,0 +1,44 @@
+.form {
+  padding: 5px;
+  min-height: 500px;
+  -webkit-box-shadow: -1px -11px 25px 1px rgba(83,84,83,0.77);
+  -moz-box-shadow: -1px -11px 25px 1px rgba(83,84,83,0.77);
+  box-shadow: -1px -11px 25px 1px rgba(83,84,83,0.77);
+}
+
+.form > *{
+  padding: 5px;
+}
+
+.section-container {
+  display: flex;
+}
+
+.section-controllers {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px 0px;
+  align-items: center;
+}
+
+.section-controllers .arrow {
+  color: #6aa69f;
+  cursor: pointer;
+}
+
+.section-controllers .radio {
+  border: 1px solid #6aa69f;
+  width: 18px;
+  height: 18px;
+}
+
+.section-controllers .delete {
+  color: #f00;
+  cursor: pointer;
+}
+
+.section-comp {
+  width: 100%;
+  min-height: 100px;
+}

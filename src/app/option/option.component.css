@@ -1,0 +1,8 @@
+.panel {
+    background-color: #00000003;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}

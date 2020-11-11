@@ -1,0 +1,36 @@
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="panel" *ngIf="(option | json) != '{}'">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{option.label}}
+    </mat-panel-title>
+    <mat-panel-description>
+      <mat-icon (click)="deleteOption()">delete_forever</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="container">
+    <mat-form-field appearance="outline" [color]="'accent'">
+      <mat-label>Label</mat-label>
+      <input matInput placeholder="label" [(ngModel)]="option.label">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" [color]="'accent'">
+      <mat-label>Value</mat-label>
+      <input matInput placeholder="value" [(ngModel)]="option.value">
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" *ngIf="option['id']" [color]="'accent'">
+      <mat-label>ID</mat-label>
+      <input matInput placeholder="id" [(ngModel)]="option.id">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" *ngIf="option.hasOwnProperty('dataConcept')" [color]="'accent'">
+      <mat-label>Data Concept</mat-label>
+      <input [(ngModel)]="option.dataConcept" matInput>
+    </mat-form-field>
+  
+    <mat-checkbox *ngIf="option.hasOwnProperty('checked')" [(ngModel)]="option.checked">Checked</mat-checkbox>
+    <mat-checkbox *ngIf="option.hasOwnProperty('hasFreeTxt')" [(ngModel)]="option.hasFreeTxt">Has Free Text</mat-checkbox>
+    <mat-checkbox *ngIf="option.hasOwnProperty('onlyChoice')" [(ngModel)]="option.onlyChoice">Only Choice</mat-checkbox>
+  </div>
+
+</mat-expansion-panel>

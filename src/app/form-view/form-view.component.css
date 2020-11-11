@@ -1,0 +1,19 @@
+h3{
+    text-align: center;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+div{
+    width: fit-content;
+}
+
+.izmir-icons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.icon {
+    cursor: pointer;
+}

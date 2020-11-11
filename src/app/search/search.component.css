@@ -1,0 +1,169 @@
+.search {
+  border: 1px solid #08685c;
+  border-radius: 2.5em;
+  height: 20px;
+  width: 25%;
+  min-width: 400px;
+  padding: 10px;
+}
+
+.icon {
+  vertical-align: middle;
+  color: #179280;
+}
+
+.icon-animation {
+  animation: iconFrames ease-in-out 0.5s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  animation-fill-mode: forwards;
+  /*when the spec is finished*/
+  -webkit-animation: iconFrames ease-in-out 0.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-fill-mode: forwards;
+  /*Chrome 16+, Safari 4+*/
+  -moz-animation: iconFrames ease-in-out 0.5s;
+  -moz-animation-iteration-count: 1;
+  -moz-transform-origin: 50% 50%;
+  -moz-animation-fill-mode: forwards;
+  /*FF 5+*/
+  -o-animation: iconFrames ease-in-out 0.5s;
+  -o-animation-iteration-count: 1;
+  -o-transform-origin: 50% 50%;
+  -o-animation-fill-mode: forwards;
+  /*Not implemented yet*/
+  -ms-animation: iconFrames ease-in-out 0.5s;
+  -ms-animation-iteration-count: 1;
+  -ms-transform-origin: 50% 50%;
+  -ms-animation-fill-mode: forwards;
+  /*IE 10+*/
+}
+
+@keyframes iconFrames {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  100% {
+    transform: translate(30px, 0px);
+  }
+}
+
+@-moz-keyframes iconFrames {
+  0% {
+    -moz-transform: translate(0px, 0px);
+  }
+
+  100% {
+    -moz-transform: translate(30px, 0px);
+  }
+}
+
+@-webkit-keyframes iconFrames {
+  0% {
+    -webkit-transform: translate(0px, 0px);
+  }
+
+  100% {
+    -webkit-transform: translate(30px, 0px);
+  }
+}
+
+@-o-keyframes iconFrames {
+  0% {
+    -o-transform: translate(0px, 0px);
+  }
+
+  100% {
+    -o-transform: translate(30px, 0px);
+  }
+}
+
+@-ms-keyframes iconFrames {
+  0% {
+    -ms-transform: translate(0px, 0px);
+  }
+
+  100% {
+    -ms-transform: translate(30px, 0px);
+  }
+}
+
+.reverse-animation {
+  animation: reverseIconFrames ease-in-out 0.5s;
+  animation-iteration-count: 1;
+  transform-origin: 50% 50%;
+  animation-fill-mode: forwards;
+  /*when the spec is finished*/
+  -webkit-animation: reverseIconFrames ease-in-out 0.5s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-transform-origin: 50% 50%;
+  -webkit-animation-fill-mode: forwards;
+  /*Chrome 16+, Safari 4+*/
+  -moz-animation: reverseIconFrames ease-in-out 0.5s;
+  -moz-animation-iteration-count: 1;
+  -moz-transform-origin: 50% 50%;
+  -moz-animation-fill-mode: forwards;
+  /*FF 5+*/
+  -o-animation: reverseIconFrames ease-in-out 0.5s;
+  -o-animation-iteration-count: 1;
+  -o-transform-origin: 50% 50%;
+  -o-animation-fill-mode: forwards;
+  /*Not implemented yet*/
+  -ms-animation: reverseIconFrames ease-in-out 0.5s;
+  -ms-animation-iteration-count: 1;
+  -ms-transform-origin: 50% 50%;
+  -ms-animation-fill-mode: forwards;
+  /*IE 10+*/
+}
+
+@keyframes reverseIconFrames {
+  0% {
+    transform: translate(30px, 0px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@-moz-keyframes reverseIconFrames {
+  0% {
+    -moz-transform: translate(30px, 0px);
+  }
+
+  100% {
+    -moz-transform: translate(0px, 0px);
+  }
+}
+
+@-webkit-keyframes reverseIconFrames {
+  0% {
+    -webkit-transform: translate(30px, 0px);
+  }
+
+  100% {
+    -webkit-transform: translate(0px, 0px);
+  }
+}
+
+@-o-keyframes reverseIconFrames {
+  0% {
+    -o-transform: translate(30px, 0px);
+  }
+
+  100% {
+    -o-transform: translate(0px, 0px);
+  }
+}
+
+@-ms-keyframes reverseIconFrames {
+  0% {
+    -ms-transform: translate(30px, 0px);
+  }
+
+  100% {
+    -ms-transform: translate(0px, 0px);
+  }
+}

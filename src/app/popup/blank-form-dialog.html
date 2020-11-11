@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>CREATE NEW FORM</h1>
+
+<div mat-dialog-content>
+  <form class="form" #Form="ngForm">
+    <mat-form-field class="field" [color]="'accent'">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Enter Form Name" name="name" required [(ngModel)]="name">
+      <mat-error *ngIf="Form.controls.name?.invalid">Must enter a name for the form</mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="field" [color]="'accent'">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Enter Form Description..." name="description" required rows="5" 
+        [(ngModel)]="description"></textarea>
+        <mat-error *ngIf="Form.controls.description?.invalid">Must enter a description for the form</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+
+<div mat-dialog-actions class="actions">
+  <button mat-button (click)="onNoClick()">Return</button>
+  <button mat-button (click)="openFormBuilder()" [disabled]="Form.invalid" cdkFocusInitial>GO!</button>
+</div>

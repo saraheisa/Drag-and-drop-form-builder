@@ -1,0 +1,14 @@
+<div class="container">
+
+  <app-search (searchTextEmitter)="setSearchText($event)" class="search-input" ></app-search>
+
+  <button class="add-form" mat-raised-button color="accent" (click)="openDialog()">
+    <mat-icon>add</mat-icon> FORM
+  </button>
+  
+  <div class="form-container">
+    <app-form-view *ngFor="let form of forms | filter:searchText; index as i" [form]="form" [withControls]="true"
+    (deleteFormEmitter)="deleteForm(i)"></app-form-view>
+  </div>
+
+</div>

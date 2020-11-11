@@ -1,0 +1,66 @@
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.option {
+  margin: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.option:hover {
+  opacity: 0.7;
+}
+
+.form {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.field {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+}
+
+.seperator {
+  border-right: 1px solid #716f6f;
+}
+
+.preview {
+  width: 30%;
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.selected {
+  opacity: 0.7;
+  background-color: #d8dcd563;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.hover:hover {
+  opacity: 0.7;
+}

@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.side {
+    width: 20%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    margin: 0 5px;
+    background-color: #076b5f;
+}
+
+.middle {
+    width: 60%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.title {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #7A7A7A;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.side::-webkit-scrollbar, .middle::-webkit-scrollbar {
+    width: 1em;
+  }
+   
+.side::-webkit-scrollbar-track, .middle::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px #00000030;
+}
+
+.side::-webkit-scrollbar-thumb, .middle::-webkit-scrollbar-thumb{
+    background-color: #3cb38a;
+}
+
+.add-section {
+    width: 100%;
+    margin-top: 10px;
+}

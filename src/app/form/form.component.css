@@ -1,0 +1,28 @@
+.tab-content {
+    padding: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mat-ink-bar{
+    background-color: #076b5f;
+    width: 50%;
+}
+
+[aria-label=primary] {
+    background-color: #076b5f;
+    width: 50%;
+}
+
+.copy-icon {
+    float: right;
+    cursor: pointer;
+    color: #076b5f;
+    margin: 20px;
+}
+
+.code {
+    background-color: #373535;
+    color: #dcdcd6;
+    padding: 20px;
+}
