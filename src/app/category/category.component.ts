@@ -9,7 +9,7 @@ import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-d
 export class CategoryComponent implements OnInit {
 
   panelOpenState = false;
-  @Input() category: Object;
+  @Input() category;
   @Input() sectionIds;
 
   constructor() { }
